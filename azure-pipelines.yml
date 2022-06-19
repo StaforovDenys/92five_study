@@ -97,7 +97,7 @@ stages:
               slotName: 'production'
               package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               runtimeStack: 'PHP|5.6'
-          - task: PublishBuildArtifacts@1    
-            displayName: 'Publish Artifact: drop'
-            inputs:
-              PathtoPublish: '$(build.artifactstagingdirectory)'
+          #- task: PublishBuildArtifacts@1    
+          #  displayName: 'Publish Artifact: drop'
+          #  inputs:
+          #    PathtoPublish: '$(build.artifactstagingdirectory)'
