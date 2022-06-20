@@ -65,7 +65,7 @@ stages:
       artifact: drop
 
 - stage: Test
-  displayName: Test
+  displayName: Test 
 
 - stage: Deploy
   displayName: 'Deploy Web App'
