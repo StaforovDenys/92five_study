@@ -65,7 +65,11 @@ stages:
       artifact: drop
 
 - stage: Test
-  displayName: Test 
+  displayName: "Test"
+  jobs:
+  - job:
+      steps:
+      - bash: echo "Test"
 
 - stage: Deploy
   displayName: 'Deploy Web App'
