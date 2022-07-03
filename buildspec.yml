@@ -1,0 +1,47 @@
+version: 0.2
+phases:
+ install:
+   commands:
+     - |
+         #Install php5.6
+         apt-get update
+         apt-get install -y  software-properties-common
+         LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+         apt-get update
+         # Install PHP
+         apt-get install -y php5.6\
+                  php5.6-ldap \
+                  php5.6-xml \
+                  php5.6-xmlrpc \
+                  php5.6-zip \
+                  php5.6-mysql \
+                  php5.6-mbstring \
+                  php5.6-mcrypt \
+                  php5.6-gd \
+                  php5.6-pdo \
+                  php5.6-readline \
+                  php5.6-opcache \
+                  php5.6-xdebug \
+                  php5.6-dom \
+                  php-xdebug \
+                  php5.6-curl \
+                  unzip
+         #Enable xdebug - phpunit uses this for code coverage
+         phpenmod xdebug
+         #Install composer
+         php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+         php composer-setup.php ;
+         php -r "unlink('composer-setup.php');" ;
+         mv composer.phar /usr/local/bin/composer
+         #Various handy node based dev tools - do you need these during your build? Comment if not.
+         #npm install -g gulp
+         #npm install -g grunt
+         #npm install -g webpack
+     # Start Mysql if you need it
+     # - apt-get install -y mysql-server
+     # - su mysql -s /bin/bash -c "/usr/sbin/mysqld" &
+ build:
+   commands:
+     - echo Build started on `date`
+     - echo Installing composer deps
+     - composer install --no-scripts --ignore-platform-reqs
