@@ -44,7 +44,4 @@ phases:
    commands:
      - echo Build started on `date`
      - echo Installing composer deps
-     - composer install --no-scripts --ignore-platform-reqs
- artifacts:
-  files:
-    - '**/*'    
+     - composer install --no-scripts --ignore-platform-reqs   
